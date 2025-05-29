@@ -8,6 +8,7 @@ import wishlistRouter from "./routes/wishlist.router.js";
 import offerRoutes from "./routes/offer.router.js";
 import messageRouter from "./routes/message.route.js";
 import path from "path";
+import cors from "cors";
 import { fileURLToPath } from "url";
 import "./db/connection.js";  
 
@@ -17,6 +18,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+app.use(cors({
+    origin: ['https://kaleidoscopic-khapse-a69e92.netlify.app', 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-access-token'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
+    credentials: true
+}));
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
@@ -46,7 +55,7 @@ app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, "/404.html"));
 });
 
-app.listen(5000, (err) => {
+app.listen(3000, (err) => {
     if(err) console.log("err", err);
-    console.log("server listening on 5000");
+    console.log("server listening on 3000");
 });
