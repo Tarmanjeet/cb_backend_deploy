@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 app.use(cors({
-    origin: ['https://kaleidoscopic-khapse-a69e92.netlify.app', 'http://localhost:5173'],
+    origin: ['https://spectacular-sprinkles-c53624.netlify.app/', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-access-token'],
     exposedHeaders: ['Content-Range', 'X-Content-Range'],
